@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, withRouter } from 'react-router-dom';
 
-export default class PrivateRoute extends Component {
+class PrivateRoute extends Component {
 	static propTypes = {
 		path: PropTypes.string.isRequired,
 		authStatus: PropTypes.bool.isRequired,
@@ -12,23 +12,41 @@ export default class PrivateRoute extends Component {
 		exact: PropTypes.bool
 	};
 
+	componentDidMount() {
+		if (this.props.authStatus !== true) {
+			if (this.props.redirectURL) {
+				if (this.props.location.pathname === this.props.path) {
+					this.props.history.push(this.props.redirectURL);
+				}
+			}
+		}
+	}
+
 	render() {
-		const { authStatus, redirectURL, component, nonLoggedInComponent, path } = this.props;
+		const {
+			authStatus,
+			redirectURL,
+			component: Component,
+			nonLoggedInComponent: NonLoggedInComponent,
+			path
+		} = this.props;
 
 		if (authStatus === true) {
-			return <Route path={path} component={component} />;
+			return <Route path={path} component={Component} />;
 		}
 
 		if (authStatus === false) {
 			if (redirectURL) {
 				if (redirectURL.trim().length > 0) {
-					return <Redirect to={redirectURL} />;
+					// return <Redirect to={redirectURL} />;
 				}
-			} else if (nonLoggedInComponent) {
-				return <Route path={path} component={nonLoggedInComponent} />;
+			} else if (NonLoggedInComponent) {
+				return <Route path={path} render={(props) => <NonLoggedInComponent {...props} />} />;
 			}
 		}
 
-		return <Route path={path} component={component} />;
+		return <Route path={path} component={Component} />;
 	}
 }
+
+export default withRouter(PrivateRoute);
