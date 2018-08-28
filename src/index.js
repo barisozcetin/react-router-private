@@ -1,22 +1,27 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-
-import styles from './styles.css'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Route, Redirect } from 'react-router-dom';
 
 export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
+	static propTypes = {
+		to: PropTypes.string.isRequired,
+		authStatus: PropTypes.bool.isRequired,
+		redirectURL: PropTypes.string,
+		component: PropTypes.object.isRequired,
+		nonLoggedInComponent: Proptypes.object
+	};
 
-  render() {
-    const {
-      text
-    } = this.props
+	render() {
+		const { authStatus, redirectURL, component, nonLoggedInComponent, to } = this.props;
 
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
+		if (authStatus === false) {
+			if (redirectURL.trim().length > 0) {
+				return <Redirect to={redirectURL} />;
+			} else if (nonLoggedInComponent) {
+				return <Route to={to} component={component} />;
+			}
+		}
+
+		return <Route to={to} component={component} />;
+	}
 }
