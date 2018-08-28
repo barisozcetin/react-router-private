@@ -27,9 +27,9 @@ class Example extends Component {
     return (
     <div className="app" >
       <Router>
-        <Route to ="/" exact component={home}></Route>
-        <PrivateRoute to="/profile" exact component={Profile} authStatus={this.state.authStatus} redirectURL="/login"/>
-        <PrivateRoute to="/another-route" component={Profile} authStatus={this.state.authStatus} nonLoggedInComponent={AlternativeComponent} />
+        <Route path ="/" exact component={home}></Route>
+        <PrivateRoute path="/profile" exact component={Profile} authStatus={this.state.authStatus} redirectURL="/login"/>
+        <PrivateRoute path="/another-route" component={Profile} authStatus={this.state.authStatus} nonLoggedInComponent={AlternativeComponent} />
       </Router>
     </div>
     )

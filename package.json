@@ -1,6 +1,6 @@
 {
 	"name": "react-router-private",
-	"version": "1.0.2",
+	"version": "1.0.5",
 	"description": "Private route component for React &amp; React Router",
 	"author": "barisozcetin",
 	"license": "MIT",
