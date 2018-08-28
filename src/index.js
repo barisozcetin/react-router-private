@@ -8,7 +8,7 @@ export default class ExampleComponent extends Component {
 		authStatus: PropTypes.bool.isRequired,
 		redirectURL: PropTypes.string,
 		component: PropTypes.object.isRequired,
-		unauthorizedComponent: Proptypes.object,
+		nonLoggedInComponent: Proptypes.object,
 		exact: PropTypes.bool
 	};
 
