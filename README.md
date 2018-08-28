@@ -26,9 +26,11 @@ class Example extends Component {
   render () {
     return (
     <div className="app" >
-      <Route to ="/" exact component={home}></Route>
-      <PrivateRoute to="/profile" exact component={Profile} authStatus={this.state.authStatus} redirectURL="/login"/>
-      <PrivateRoute to="/another-route" component={Profile} authStatus={this.state.authStatus} nonLoggedInComponent={AlternativeComponent} />
+      <Router>
+        <Route to ="/" exact component={home}></Route>
+        <PrivateRoute to="/profile" exact component={Profile} authStatus={this.state.authStatus} redirectURL="/login"/>
+        <PrivateRoute to="/another-route" component={Profile} authStatus={this.state.authStatus} nonLoggedInComponent={AlternativeComponent} />
+      </Router>
     </div>
     )
   }
