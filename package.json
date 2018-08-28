@@ -1,6 +1,6 @@
 {
 	"name": "react-router-private",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Private route component for React &amp; React Router",
 	"author": "barisozcetin",
 	"license": "MIT",
@@ -47,6 +47,7 @@
 		"react": "^16.4.1",
 		"react-dom": "^16.4.1",
 		"react-scripts": "^1.1.4",
+		"react-router-dom": "^4.0.0",
 		"rollup": "^0.64.1",
 		"rollup-plugin-babel": "^3.0.7",
 		"rollup-plugin-commonjs": "^9.1.3",
