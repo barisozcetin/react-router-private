@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
-export default class ExampleComponent extends Component {
+export default class PrivateRoute extends Component {
 	static propTypes = {
 		path: PropTypes.string.isRequired,
 		authStatus: PropTypes.bool.isRequired,
@@ -20,10 +20,12 @@ export default class ExampleComponent extends Component {
 		}
 
 		if (authStatus === false) {
-			if (redirectURL.trim().length > 0) {
-				return <Redirect to={redirectURL} />;
+			if (redirectURL) {
+				if (redirectURL.trim().length > 0) {
+					return <Redirect to={redirectURL} />;
+				}
 			} else if (nonLoggedInComponent) {
-				return <Route path={path} component={component} />;
+				return <Route path={path} component={nonLoggedInComponent} />;
 			}
 		}
 
