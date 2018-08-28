@@ -1,14 +1,18 @@
 # react-router-private
 
-> Private route component for React &amp; React Router
+> Private route component for React & React Router
 
-[![NPM](https://img.shields.io/npm/v/react-router-private.svg)](https://www.npmjs.com/package/react-router-private) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-router-private.svg)](https://www.npmjs.com/package/react-router-private) 
 
 ## Install
 
 ```bash
 npm install --save react-router-private
 ```
+
+## TODO
+
+> Add example
 
 ## Usage
 
