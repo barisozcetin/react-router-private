@@ -14,13 +14,18 @@ npm install --save react-router-private
 
 ```jsx
 import React, { Component } from 'react'
-
-import MyComponent from 'react-router-private'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+...
+import PrivateRoute from 'react-router-private'
 
 class Example extends Component {
   render () {
     return (
-      <MyComponent />
+    <div className="app" >
+      <Route to ="/" exact component={home}></Route>
+      <PrivateRoute to="/profile" exact component={Profile} authStatus={this.state.authStatus} redirectURL="/login"/>
+      <PrivateRoute to="/another-route"  authStatus={this.state.authStatus} nonLoggedInComponent={AlternativeComponent} />
+    </div>
     )
   }
 }
